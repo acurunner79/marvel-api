@@ -1,0 +1,11 @@
+.nav{
+    display: flex;
+    background: url('https://res.cloudinary.com/acurunner79/image/upload/c_scale,w_2500/v1627011166/XMEN-Twitter-Cover-1500x500_ep1yin.jpg');
+    background-repeat: no-repeat;
+}
+
+.nav-links li{
+    -webkit-text-stroke: 2px black;
+    flex-direction: row !important;
+    color: red !important;
+}
