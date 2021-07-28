@@ -39,7 +39,7 @@ const MarvelDisplay = (props) => {
     const response = await fetch(apiUrl)
     const data = await response.json()
     setCharacters(data)
-     console.log('This is characte', characters)
+     console.log('This is characters', characters)
   }
   
   useEffect(() => {
@@ -58,13 +58,20 @@ const MarvelDisplay = (props) => {
 
             return (
                 <div key={index}>
-                    <Link className="underline" to="/">
+                  <div className="character-container">
+                    <div className="character-card">
+                      <Link className="underline" to="/marvel-search">
                         <h3 className="return-search">Return to search</h3>
-                    </Link>
-                    <h2>{character?.name}</h2>
-                    <img src={newImgStr} alt="thumbnail"></img>
-                    <h3>{character?.description}</h3>
-                    <h3>Total comics: {character?.comics?.available}</h3>
+                      </Link>
+                        <h1>{character?.name}</h1>
+                        <div className="char-img-desc">
+                          <img className="character-img" src={newImgStr} alt="thumbnail"></img>
+                          <h3>"{character?.description || "Not Available"}"</h3>
+                        </div>
+                        <h3>Total comics: {character?.comics?.available}</h3>
+                    </div>
+                  </div>
+                      <h2>Comic Books Available</h2>
                     <div>
                       {                       
                         character?.comics?.items?.map((item, index) => {
@@ -73,11 +80,12 @@ const MarvelDisplay = (props) => {
                           // console.log('this is the button url', comicApi)
 
                           return(
-                            <div key={index}>
+                            <>
                               <Link to="/selected-display">
-                                <button className="button" onClick={() => props.comics(comicApi)}>{item?.name}</button>
+                                <button className="buttons" onClick={() => props.comics(comicApi)}><p>{item?.name}</p>Click here</button>
+                                
                               </Link>
-                            </div>
+                            </>
                           )})
                         }
                     </div>

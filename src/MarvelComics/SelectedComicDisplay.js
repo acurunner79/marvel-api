@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react'
 
 
 const SelectedComicDisplay = (props) => {
-    console.log('Selected comicsList props', props.comics)
+    console.log('Selected comicsList prop', props.comics)
 
     const comicApi = `${props.comics}`
 
@@ -16,7 +16,7 @@ const SelectedComicDisplay = (props) => {
         const response = await fetch(comicApi)
         const data = await response.json()
         setComicsLists(data)
-        console.log('this is comics li', comicsLists)
+        console.log('this is comics list', comicsLists)
     }
 
     useEffect(() => {
@@ -36,9 +36,9 @@ const SelectedComicDisplay = (props) => {
                         <h1>{comicsList.title}</h1>
                         <img src={newImgStr} alt="thumbnail"></img>
                         <p>{comicsList.description}</p>
-                        <p>US price: ${comicsList.prices[1].price}</p>
+                        <p>US price: ${comicsList?.prices[0]?.price, comicsList?.prices[1]?.price || " Not Available"}</p>
                         <div>
-                            <button className="button">Purchase on Marvel.com</button>
+                            <button className="button"><h4><a target="_blank" rel="noreferrer" href={comicsList.urls[0].url}>Purchase on Marvel.com</a></h4></button>
                         </div>
                       </div>
                     )

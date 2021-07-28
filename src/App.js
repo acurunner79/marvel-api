@@ -6,8 +6,37 @@ import ComicSearch from './MarvelComics/ComicSearch';
 import SelectedComicDisplay from './MarvelComics/SelectedComicDisplay';
 import Nav from './nav';
 import { Route } from "react-router-dom"
+import { createGlobalStyle } from "styled-components";
 import './App.css';
+import AnimeAceWOFF from './fonts/animeace2_reg.woff'
 
+
+const GlobalStyle = createGlobalStyle`
+  @font-face {
+  font-family: 'Anime Ace';
+  src: local('Anime Ace'), url(${AnimeAceWOFF}) format('woff');
+  }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Anime Ace',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-stroke: 2px black;
+  font-size: 20px;
+  color: white;
+  text-decoration: none !important;
+  background-color: red;
+  height: 1080px;
+  align-items: center;
+}
+
+h1{
+  font-family: 'Bangers';
+  font-size: 60px;
+}
+
+`
 
 function App() {
 
@@ -28,6 +57,7 @@ const [comic, setComic] = React.useState(null)
 
   return (
     <div className="App">
+      <GlobalStyle />
       <Nav />
       <h1>Marvel API Test</h1>
       <Route path="/marvel-display">
