@@ -81,7 +81,8 @@ const MarvelDisplay = (props) => {
                           return(
                             <>
                               <Link to="/selected-display">
-                                <button className="buttons" onClick={() => props.comics(comicApi)}><p>{item?.name}</p>Click here</button>
+                                <button className="buttons" onClick={() => props.comics(comicApi)} onTouchStart={() => props.comics(comicApi)}><p>{item?.name}</p>Click here</button>
+
                               </Link>
                             </>
                           )})
