@@ -53,6 +53,7 @@ h3.return-search{
 }
 
 .buttons{
+    cursor:'pointer';
     width: 164px;
     height: 250px;
     margin: 30px;

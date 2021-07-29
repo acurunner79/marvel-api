@@ -77,13 +77,11 @@ const MarvelDisplay = (props) => {
                         character?.comics?.items?.map((item, index) => {
 
                           const comicApi = `${item?.resourceURI}?nameStartsWith=${searchname}&ts=${timestamp}&apikey=${apiPublic}&hash=${hash}`
-                          // console.log('this is the button url', comicApi)
 
                           return(
                             <>
                               <Link to="/selected-display">
                                 <button className="buttons" onClick={() => props.comics(comicApi)}><p>{item?.name}</p>Click here</button>
-                                
                               </Link>
                             </>
                           )})
