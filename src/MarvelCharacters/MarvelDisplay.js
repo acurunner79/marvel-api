@@ -1,18 +1,16 @@
-import React, { useEffect, useRef} from 'react' 
+import React, { useEffect, useRef, useState} from 'react' 
 import { Link } from "react-router-dom";
 import md5 from 'md5'
 import '../styles/display.css'
-import env from "react-dotenv";
-
-
 
 
 const MarvelDisplay = (props) => {
   //  console.log('this is props', props)
 
-  const apiPublic = env.PUBLIC_KEY
+  const apiPublic = process.env.REACT_APP_PUBLIC_KEY
+  console.log('public key', apiPublic)
 
-  const privateKey = env.PRIVATE_KEY
+  const privateKey = process.env.REACT_APP_PRIVATE_KEY
 
 // This generates a timestamp that is unique by request  
   const date = new Date()
@@ -30,7 +28,7 @@ const MarvelDisplay = (props) => {
   const apiUrl = `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${searchname}&ts=${timestamp}&apikey=${apiPublic}&hash=${hash}`
 
  
-  const [characters, setCharacters] = React.useState(null)
+  const [characters, setCharacters] = useState(null)
   // const [comicsList, setComicsList] = React.useState(null)
   
   const getCharacters = useRef(() => {})
