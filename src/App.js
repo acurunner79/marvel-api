@@ -1,9 +1,11 @@
-import React from 'react' 
+import React, { useState } from 'react' 
 import MarvelSearch from './MarvelCharacters/MarvelSearch'
 import MarvelDisplay from './MarvelCharacters/MarvelDisplay';
 import ComicDisplay from './MarvelComics/ComicDisplay';
 import ComicSearch from './MarvelComics/ComicSearch';
 import SelectedComicDisplay from './MarvelComics/SelectedComicDisplay';
+import ComicsList from './MarvelComics/ComicsList';
+import Comic from './MarvelComics/Comic'
 import Nav from './nav';
 import { Route } from "react-router-dom"
 import { createGlobalStyle } from "styled-components";
@@ -38,33 +40,46 @@ h1{
 
 `
 
-function App() {
+function App(props) {
 
+  // State for character search form
+  const [character, setCharacter] = useState(null)
+    const charactersearch = (myCharacter) => {
+      setCharacter(myCharacter)
+    }
 
-const [character, setCharacter] = React.useState(null)
-  const charactersearch = (myCharacter) => {
-     setCharacter(myCharacter)
-  }
-
-const [comic, setComic] = React.useState(null)
-  const comicsearch = (myComic) => {
-    setComic(myComic)
-  }
+  // State for comic search form
+  const [comic, setComic] = useState(null)
+    const comicsearch = (myComic) => {
+      setComic(myComic)
+    }
 
   // Selected Comic List
-  const [comics, setComics] = React.useState(null)
- 
+  const [comics, setComics] = useState(null)
+  
+  //Individual comic from comic list
+  const [selectedComic, setSelectedComic] = useState(null)
+  
 
+  const [comicImg, setComicImg] = useState(null)
+ 
   return (
     <div className="App">
       <GlobalStyle />
       <Nav />
       <h1>Marvel API Test</h1>
       <Route path="/marvel-display">
-        <MarvelDisplay character={character} comics={setComics}/>
+        <MarvelDisplay character={character} setComics={setComics} setComicImg={setComicImg}/>
       </Route>
       <Route exact path="/selected-display">
-        <SelectedComicDisplay comics={comics}/>
+        <SelectedComicDisplay selectedComic={selectedComic}/>
+      </Route>
+      {/* <Route exact path="/comics-list"> */}
+        {/* <ComicsList comics={comics} character={character} selectedComic={setSelectedComic}/> */}
+        {/* <ComicsList comics={comics} character={character} comicImg={comicImg} selectedComic={setSelectedComic}/>
+      </Route> */}
+      <Route exact path="/comics">
+        <Comic comics={comics} comicImg={comicImg} character={character} selectedComic={setSelectedComic}/>
       </Route>
       <Route exact path="/marvel-search" render={(routerProps) => <MarvelSearch {...routerProps} charactersearch={charactersearch}/>} />
       <Route path="/comic-display">

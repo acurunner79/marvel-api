@@ -8,7 +8,7 @@ const MarvelDisplay = (props) => {
   //  console.log('this is props', props)
 
   const apiPublic = process.env.REACT_APP_PUBLIC_KEY
-  console.log('public key', apiPublic)
+  // console.log('public key', apiPublic)
 
   const privateKey = process.env.REACT_APP_PRIVATE_KEY
 
@@ -27,32 +27,30 @@ const MarvelDisplay = (props) => {
 
   const apiUrl = `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${searchname}&ts=${timestamp}&apikey=${apiPublic}&hash=${hash}`
 
- 
   const [characters, setCharacters] = useState(null)
-  // const [comicsList, setComicsList] = React.useState(null)
   
-  const getCharacters = useRef(() => {})
+  const getCharacters = useRef()
 
   getCharacters.current = async () => {
     const response = await fetch(apiUrl)
     const data = await response.json()
     setCharacters(data)
-     console.log('This is characters', characters)
+      console.log('This is characters', characters)
   }
   
   useEffect(() => {
     getCharacters.current()
   }, [])
-  
-  
-  
+   
   const loaded = () => {
     
     return (
       characters?.data?.results?.map((character, index) => {
+        // console.log('character items',character?.thumbnail)
 
         const imgStr = [`${character?.thumbnail?.path}`,'.', `${character?.thumbnail?.extension}`]
         const newImgStr = imgStr.join('')
+        // console.log('newString', newImgStr)
 
             return (
                 <div key={index}>
@@ -70,21 +68,23 @@ const MarvelDisplay = (props) => {
                     </div>
                   </div>
                       <h2>Comic Books Available</h2>
+                      <p>{character?.comics?.list}</p>
+                    <Link to="/comics">
+                      <button  onClick={() => props.setComics(character?.comics?.items )}>List of comics</button>
+                    </Link>
                     <div>
                       {                       
                         character?.comics?.items?.map((item, index) => {
-
-                          const comicApi = `${item?.resourceURI}?nameStartsWith=${searchname}&ts=${timestamp}&apikey=${apiPublic}&hash=${hash}`
+                          // console.log('mapped item', item)
+                          // const comicInfo = props.setComicImg(item)
+                          // console.log('comicInfo', comicInfo)
 
                           return(
-                            <>
-                              <Link to="/selected-display">
-                                <button className="buttons" onClick={() => props.comics(comicApi)} onTouchStart={() => props.comics(comicApi)}><p>{item?.name}</p>Click here</button>
-
-                              </Link>
-                            </>
+                            <div key={index}>
+                              <p></p>
+                            </div>
                           )})
-                        }
+                        } 
                     </div>
                   </div>
                 )
