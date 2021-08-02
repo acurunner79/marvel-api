@@ -70,7 +70,7 @@ function App(props) {
       <Nav />
       <BootstrapCarousel />
       <h1>Marvel API Test</h1>
-      <Route path="/marvel-display">
+      <Route exact path="/marvel-display">
         <MarvelDisplay character={character} setComics={setComics} setComicImg={setComicImg}/>
       </Route>
       <Route exact path="/selected-display">
