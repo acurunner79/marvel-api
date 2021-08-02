@@ -70,7 +70,7 @@ const MarvelDisplay = (props) => {
                       <h2>Comic Books Available</h2>
                       <p>{character?.comics?.list}</p>
                     <Link to="/comics-list">
-                      <button  onClick={() => props.setComics(character?.comics?.items )}>List of comics</button>
+                      <button  onClick={() => props.setComics(character?.comics?.items)}>List of comics</button>
                     </Link>
                 </div>
               )
