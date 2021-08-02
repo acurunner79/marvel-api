@@ -15,7 +15,7 @@ const MarvelSearch = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         props.charactersearch(characterData.name)
-        props.history.push("/marvel-display")
+        props.history.push("/")
     }   
 
     return (
