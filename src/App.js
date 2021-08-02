@@ -6,6 +6,7 @@ import ComicSearch from './MarvelComics/ComicSearch';
 import SelectedComicDisplay from './MarvelComics/SelectedComicDisplay';
 import ComicsList from './MarvelComics/ComicsList';
 import Comic from './MarvelComics/Comic'
+import BootstrapCarousel from './BootstrapCarousel';
 import Nav from './nav';
 import { Route } from "react-router-dom"
 import { createGlobalStyle } from "styled-components";
@@ -20,15 +21,15 @@ const GlobalStyle = createGlobalStyle`
   }
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Anime Ace',
+  font-family: -apple-system, BlinkMacSystemFont, 'Bangers',
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-stroke: 2px black;
-  font-size: 20px;
+  font-size: 40px;
   color: white;
   text-decoration: none !important;
-  background-color: red;
+  background-color: black;
   height: 1080px;
   align-items: center;
 }
@@ -67,6 +68,7 @@ function App(props) {
     <div className="App">
       <GlobalStyle />
       <Nav />
+      <BootstrapCarousel />
       <h1>Marvel API Test</h1>
       <Route path="/marvel-display">
         <MarvelDisplay character={character} setComics={setComics} setComicImg={setComicImg}/>
@@ -74,10 +76,9 @@ function App(props) {
       <Route exact path="/selected-display">
         <SelectedComicDisplay selectedComic={selectedComic}/>
       </Route>
-      {/* <Route exact path="/comics-list"> */}
-        {/* <ComicsList comics={comics} character={character} selectedComic={setSelectedComic}/> */}
-        {/* <ComicsList comics={comics} character={character} comicImg={comicImg} selectedComic={setSelectedComic}/>
-      </Route> */}
+      <Route exact path="/comics-list">
+         <ComicsList comics={comics} character={character} selectedComic={setSelectedComic}/>
+      </Route> 
       <Route exact path="/comics">
         <Comic comics={comics} comicImg={comicImg} character={character} selectedComic={setSelectedComic}/>
       </Route>

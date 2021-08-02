@@ -1,0 +1,12 @@
+h3{
+    font-family: 'Bangers' !important;
+}
+div.carousel-inner, .carousel-control-prev , .carousel-control-next{
+    display: none !important;
+}
+
+@media( min-width: 768px){
+    div.carousel-inner, .carousel-control-prev , .carousel-control-next{
+        display: flex !important;
+    }
+}

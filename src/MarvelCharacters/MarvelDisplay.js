@@ -46,7 +46,7 @@ const MarvelDisplay = (props) => {
     
     return (
       characters?.data?.results?.map((character, index) => {
-        // console.log('character items',character?.thumbnail)
+         console.log('character items',character)
 
         const imgStr = [`${character?.thumbnail?.path}`,'.', `${character?.thumbnail?.extension}`]
         const newImgStr = imgStr.join('')
@@ -64,34 +64,20 @@ const MarvelDisplay = (props) => {
                           <img className="character-img" src={newImgStr} alt="thumbnail"></img>
                           <h3>"{character?.description || "Not Available"}"</h3>
                         </div>
-                        <h3>Total comics: {character?.comics?.available}</h3>
+                        <h3>Comic book appearances: {character?.comics?.available}</h3>
                     </div>
                   </div>
                       <h2>Comic Books Available</h2>
                       <p>{character?.comics?.list}</p>
-                    <Link to="/comics">
+                    <Link to="/comics-list">
                       <button  onClick={() => props.setComics(character?.comics?.items )}>List of comics</button>
                     </Link>
-                    <div>
-                      {                       
-                        character?.comics?.items?.map((item, index) => {
-                          // console.log('mapped item', item)
-                          // const comicInfo = props.setComicImg(item)
-                          // console.log('comicInfo', comicInfo)
-
-                          return(
-                            <div key={index}>
-                              <p></p>
-                            </div>
-                          )})
-                        } 
-                    </div>
-                  </div>
-                )
-              }
-            )
+                </div>
+              )
+            }
           )
-        }
+        )
+      }
             
   const loading = () => {
 
