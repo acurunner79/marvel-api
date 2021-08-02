@@ -20,7 +20,7 @@ const MarvelSearch = (props) => {
 
     return (
         <div className="search">
-        <h1>This is the Search Title section</h1>
+        <h1>This is the Search Marvel Character section</h1>
             <form onSubmit={handleSubmit}>
                 <input className="input"
                    type="text"

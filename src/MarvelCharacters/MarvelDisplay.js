@@ -7,7 +7,7 @@ import '../styles/display.css'
 const MarvelDisplay = (props) => {
   //  console.log('this is props', props)
 
-  const apiPublic = process.env.REACT_APP_PUBLIC_KEY
+  const apiPublic = 'd5d9f4b6fcbd66f1219f9668282675f8'
   // console.log('public key', apiPublic)
 
   const privateKey = process.env.REACT_APP_PRIVATE_KEY
