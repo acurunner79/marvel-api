@@ -42,6 +42,12 @@ const Comics = (props) => {
         charComics?.data?.results?.map((charComic, index) => {
             console.log('charComic.resouceUR', charComic) 
 
+        const oldURI = charComic?.resourceURI
+        const newURI = oldURI.split('')
+          newURI.splice(4, 0, 's')
+        const finalURI = newURI.join('')
+          console.log('new URI ', finalURI)
+
             const testJoin = [`${charComic?.thumbnail?.path}`,'.', `${charComic?.thumbnail?.extension}`]
             const newImgStr = testJoin.join('')
           
@@ -51,7 +57,7 @@ const Comics = (props) => {
                     <h1>{charComic.title}</h1>
                     <img src={newImgStr} alt="cover"></img>
                     <Link to="selected-display">
-                        <button onClick={() => props.selectedComic(charComic?.resourceURI)}>Details</button>
+                        <button onClick={() => props.selectedComic(finalURI)}>Details</button>
                     </Link>
                 </div>
             )

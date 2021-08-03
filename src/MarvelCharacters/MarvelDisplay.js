@@ -46,6 +46,13 @@ const MarvelDisplay = (props) => {
         // const comicCollectionURI = `${character.comics.collectionURI}?ts=${timestamp}&apikey=${apiPublic}&hash=${hash}`
         //  console.log('collectionURI', comicCollectionURI)
 
+        const oldURI = character.comics.collectionURI
+        const newURI = oldURI.split('')
+          newURI.splice(4, 0, 's')
+        const finalURI = newURI.join('')
+          console.log('new URI ', finalURI)
+
+
         const imgStr = [`${character?.thumbnail?.path}`,'.', `${character?.thumbnail?.extension}`]
         const newImgStr = imgStr.join('')
     
@@ -71,7 +78,7 @@ const MarvelDisplay = (props) => {
                     <p>Links: {character?.urls[1].url}</p>
                     <p>Links: {character?.urls[2]?.url}</p>
                   <Link to="/comics">
-                    <button  className="buttons" onClick={() => props.setComics(character.comics.collectionURI)}>List of comics</button>
+                    <button  className="buttons" onClick={() => props.setComics(finalURI)}>List of comics</button>
                   </Link>
               </div>
             )
