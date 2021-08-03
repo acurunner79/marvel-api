@@ -4,8 +4,7 @@ import MarvelDisplay from './MarvelCharacters/MarvelDisplay';
 import ComicDisplay from './MarvelComics/ComicDisplay';
 import ComicSearch from './MarvelComics/ComicSearch';
 import SelectedComicDisplay from './MarvelComics/SelectedComicDisplay';
-import ComicsList from './MarvelComics/ComicsList';
-import Comic from './MarvelComics/Comic'
+import Comics from './MarvelComics/Comics'
 import BootstrapCarousel from './BootstrapCarousel';
 import Nav from './nav';
 import { Route } from "react-router-dom"
@@ -60,9 +59,6 @@ function App(props) {
   
   //Individual comic from comic list
   const [selectedComic, setSelectedComic] = useState(null)
-  
-
-  const [comicImg, setComicImg] = useState(null)
  
   return (
     <div className="App">
@@ -71,16 +67,13 @@ function App(props) {
       <BootstrapCarousel />
       <h1>Marvel API Test</h1>
       <Route exact path="/marvel-display">
-        <MarvelDisplay character={character} setComics={setComics} setComicImg={setComicImg}/>
+        <MarvelDisplay character={character} setComics={setComics}/>
       </Route>
       <Route exact path="/selected-display">
         <SelectedComicDisplay selectedComic={selectedComic}/>
       </Route>
-      <Route exact path="/comics-list">
-         <ComicsList comics={comics} character={character} selectedComic={setSelectedComic}/>
-      </Route> 
       <Route exact path="/comics">
-        <Comic comics={comics} comicImg={comicImg} character={character} selectedComic={setSelectedComic}/>
+        <Comics comics={comics} character={character} selectedComic={setSelectedComic}/>
       </Route>
       <Route exact path="/marvel-search" render={(routerProps) => <MarvelSearch {...routerProps} charactersearch={charactersearch}/>} />
       <Route path="/comic-display">

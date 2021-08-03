@@ -6,7 +6,7 @@ import '../styles/carousel.css'
 const BootstrapCarousel = () => {
     return(
         <div> 
-            <div class='container-fluid' >  
+            <div className='container-fluid' >  
                 <div className="row title" style={{ marginBottom: "20px" }} >  
                     
                 </div>  

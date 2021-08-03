@@ -5,23 +5,18 @@ import '../styles/display.css'
 
 
 const MarvelDisplay = (props) => {
-  //  console.log('this is props', props)
 
-  const apiPublic = 'd5d9f4b6fcbd66f1219f9668282675f8'
+  const apiPublic = process.env.REACT_APP_PUBLIC_KEY
   // console.log('public key', apiPublic)
 
   const privateKey = process.env.REACT_APP_PRIVATE_KEY
+  // console.log('private key', privateKey)
 
-// This generates a timestamp that is unique by request  
   const date = new Date()
   const timestamp = date.getTime()
-//   console.log('timestamp', timestamp)
 
-// This adds all three items into a string
   const hashStr = timestamp + privateKey + apiPublic
   let hash = md5(hashStr)
-//   console.log('this is hash string', hashStr)
-//   console.log('this is hash', hash)
 
   const searchname = props?.character
 
@@ -35,7 +30,7 @@ const MarvelDisplay = (props) => {
     const response = await fetch(apiUrl)
     const data = await response.json()
     setCharacters(data)
-      console.log('This is characters', characters)
+      // console.log('This is character', characters)
   }
   
   useEffect(() => {
@@ -46,38 +41,44 @@ const MarvelDisplay = (props) => {
     
     return (
       characters?.data?.results?.map((character, index) => {
-         console.log('character items',character)
+        console.log('character items',character)
+
+        // const comicCollectionURI = `${character.comics.collectionURI}?ts=${timestamp}&apikey=${apiPublic}&hash=${hash}`
+        //  console.log('collectionURI', comicCollectionURI)
 
         const imgStr = [`${character?.thumbnail?.path}`,'.', `${character?.thumbnail?.extension}`]
         const newImgStr = imgStr.join('')
-        // console.log('newString', newImgStr)
-
+    
             return (
-                <div key={index}>
-                  <div className="character-container">
-                    <div className="character-card">
-                      <Link className="underline" to="/marvel-search">
-                        <h3 className="return-search">Return to search</h3>
-                      </Link>
-                        <h1>{character?.name}</h1>
-                        <div className="char-img-desc">
-                          <img className="character-img" src={newImgStr} alt="thumbnail"></img>
-                          <h3>"{character?.description || "Not Available"}"</h3>
-                        </div>
-                        <h3>Comic book appearances: {character?.comics?.available}</h3>
-                    </div>
-                  </div>
-                      <h2>Comic Books Available</h2>
-                      <p>{character?.comics?.list}</p>
-                    <Link to="/comics-list">
-                      <button  onClick={() => props.setComics(character?.comics?.items)}>List of comics</button>
+              <div key={index}>
+                <div className="character-container">
+                  <div className="character-card">
+                    <Link className="underline" to="/marvel-search">
+                      <h3 className="return-search">Return to search</h3>
                     </Link>
+                      <h1>{character?.name}</h1>
+                      <div className="char-img-desc">
+                        <img className="character-img" src={newImgStr} alt="thumbnail"></img>
+                        <h3>"{character?.description || "Not Available"}"</h3>
+                      </div>
+                      <h3>Comic book appearances: {character?.comics?.available}</h3>
+                  </div>
                 </div>
-              )
-            }
-          )
+                    <h2>Comic Books Available</h2>
+                    <p>{character?.comics?.list}</p>
+                    <p>Stories: {character?.stories?.collectionURI}</p>
+                    <p>Links: {character.urls[0].url}</p>
+                    <p>Links: {character?.urls[1].url}</p>
+                    <p>Links: {character?.urls[2]?.url}</p>
+                  <Link to="/comics">
+                    <button  className="buttons" onClick={() => props.setComics(character.comics.collectionURI)}>List of comics</button>
+                  </Link>
+              </div>
+            )
+          }
         )
-      }
+      )
+    }
             
   const loading = () => {
 

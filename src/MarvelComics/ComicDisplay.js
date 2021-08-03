@@ -8,11 +8,11 @@ import '../styles/display.css'
 const ComicDisplay = (props) => {
   console.log('this is comics props', props)
 
-  const apiPublic = 'd5d9f4b6fcbd66f1219f9668282675f8'
+  const apiPublic = process.env.REACT_APP_PUBLIC_KEY
   //const apiPublic = '5fa0f3c6de9effe680ca20e4ffd6664e' This is my backup account
 //   console.log('apiPublic', apiPublic)
 
-  const privateKey = '94ca720ab20951898545fc2d865d6c7b6b25b1cb'
+  const privateKey = process.env.REACT_APP_PRIVATE_KEY
   //const privateKey = '8dc7a48c524528fc45456c679ae94999aedd1f8a' This is my backup account
 //   console.log('private', privateKey)
 
