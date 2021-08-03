@@ -41,7 +41,7 @@ const MarvelDisplay = (props) => {
     
     return (
       characters?.data?.results?.map((character, index) => {
-        console.log('character items',character)
+        // console.log('character items',character)
 
         // const comicCollectionURI = `${character.comics.collectionURI}?ts=${timestamp}&apikey=${apiPublic}&hash=${hash}`
         //  console.log('collectionURI', comicCollectionURI)
@@ -50,7 +50,7 @@ const MarvelDisplay = (props) => {
         const newURI = oldURI.split('')
           newURI.splice(4, 0, 's')
         const finalURI = newURI.join('')
-          console.log('new URI ', finalURI)
+          // console.log('new URI ', finalURI)
 
 
         const imgStr = [`${character?.thumbnail?.path}`,'.', `${character?.thumbnail?.extension}`]
@@ -73,12 +73,11 @@ const MarvelDisplay = (props) => {
                 </div>
                     <h2>Comic Books Available</h2>
                     <p>{character?.comics?.list}</p>
-                    <p>Stories: {character?.stories?.collectionURI}</p>
-                    <p>Links: {character.urls[0].url}</p>
-                    <p>Links: {character?.urls[1].url}</p>
-                    <p>Links: {character?.urls[2]?.url}</p>
+                    <button>Stories: {character?.stories?.collectionURI}</button>
+                    <button ><h4><a target="_blank" rel="noreferrer" href={character.urls[0].url}>More comics on {character.name}</a></h4></button>
+                    <button ><h4><a target="_blank" rel="noreferrer" href={character.urls[1].url}>More Info about {character.name}</a></h4></button>
                   <Link to="/comics">
-                    <button  className="buttons" onClick={() => props.setComics(finalURI)}>List of comics</button>
+                    <button  className="button" onClick={() => props.setComics(finalURI)}>List of comics</button>
                   </Link>
               </div>
             )

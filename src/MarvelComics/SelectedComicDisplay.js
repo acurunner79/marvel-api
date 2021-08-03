@@ -4,7 +4,7 @@ import md5 from 'md5'
 
 
 const SelectedComicDisplay = (props) => {
-    console.log('Selected comicsList props', props)
+    // console.log('Selected comicsList props', props)
   
   const apiPublic = process.env.REACT_APP_PUBLIC_KEY
   // console.log('public key', apiPublic)
@@ -39,7 +39,7 @@ const SelectedComicDisplay = (props) => {
   
       return (
         comicsLists?.data?.results?.map((comicsList, index) => {
-          console.log('comicList', comicsList)
+          // console.log('comicList', comicsList)
   
           const testJoin = [`${comicsList?.thumbnail?.path}`,'.', `${comicsList?.thumbnail?.extension}`]
           const newImgStr = testJoin.join('')

@@ -1,0 +1,38 @@
+p{
+    font-size: 25px;
+}
+
+div.container-sm{
+    margin: 0 !important;
+    padding: 0 !important;
+    /* display: flex; */
+    /* flex-direction: row !important; */
+}
+
+.comic-card{
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap !important;
+}
+
+.comic-main{
+    width: 224px;
+    /* display: flex !important; */
+    flex-direction: row !important;
+}
+
+a.sel-com-link{
+    width: 224px;
+    display: inline;
+    flex-direction: column !important;
+}
+
+img.comic-cover{
+    width: 224px;
+    height: 336px;
+}
+
+.comic-button{
+    font-size: 25px !important;
+}
