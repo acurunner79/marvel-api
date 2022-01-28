@@ -1,60 +1,59 @@
 .right-nav {
-    text-decoration: none !important;
-    list-style: none;
+    /* text-decoration: none !important; */
+    /* list-style: none; */
     display: flex;
     flex-flow: row nowrap;
     flex-flow: column nowrap;
-    width: 100%;
+    width: 60%;
     height: 100%;
     position: fixed;
     top: 0;
-    right: -460px;
+    right: -1260px;
     transition: all 0.5s ease-in-out;
     z-index: 50;
-    /* -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black; */
+    /* align-items: center; */
+    justify-content: center;
 }
 
-.outside {
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    transition: all 0.5s ease-in-out;
-    opacity: 0;
-    right: 55px;
-    z-index: -10;
-}
-
-div.outside.open {
-    z-index: 50;
-    opacity: 1;
+a{
+    color: white !important;
 }
 
 div.right-nav.open {
     right: 0;
-    background: black;
+    background: rgba(0, 0, 0, 0.89);
     transition: all 0.5s ease-out;
 }
 
-.right-nav.open, li {
+div.links-container{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    text-align: left !important;
+}
+
+li.rightnav-item{
     color: white;
-    -webkit-text-stroke: 2px black !important;
-    text-decoration: none;
-    font-size: 60px;
-    font-family: 'Bangers';
- }
+}
+
+.links{
+    font-size: 25px;
+    line-height: 2em;
+}
+
+.active li.rightnav-item{
+    color: red !important;
+}
 
  @media (min-width: 768px) {
+     #rightnav-main{
+         display: none;
+     }
      .right-nav {
-         width: 300px;
-         right: -750px;
+        display: none;
      }
  }
 
- @media (min-width: 1024px) {
-    .right-nav{
-        width: 0;
-        right: -300px;
-    }
-}
+ /* @media (min-width: 1024px) {
+  
+} */

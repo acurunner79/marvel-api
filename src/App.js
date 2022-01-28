@@ -6,7 +6,9 @@ import ComicSearch from './MarvelComics/ComicSearch';
 import SelectedComicDisplay from './MarvelComics/SelectedComicDisplay';
 import Comics from './MarvelComics/Comics'
 import BootstrapCarousel from './BootstrapCarousel';
-import Nav from './nav';
+// import Nav from './nav';
+import Hamburger from './nav/Hamburger'
+import TopNav from './nav/TopNav';
 import { Route } from "react-router-dom"
 import { createGlobalStyle } from "styled-components";
 import './App.css';
@@ -29,13 +31,24 @@ body {
   color: white;
   text-decoration: none !important;
   background-color: black;
-  height: 1080px;
+  /* height: 1080px; */
   align-items: center;
+}
+
+a, ul{
+    color: white;
+    text-decoration: none;
+    list-style: none;
+    /* font-family: 'Bangers'; */
 }
 
 h1{
   font-family: 'Bangers';
   font-size: 60px;
+}
+
+#main-header{
+  margin-top: 80px;
 }
 
 `
@@ -63,9 +76,11 @@ function App(props) {
   return (
     <div className="App">
       <GlobalStyle />
-      <Nav />
+      <TopNav />
+      <Hamburger />
+      {/* <Nav /> */}
       <BootstrapCarousel />
-      <h1>Marvel API Test</h1>
+      <h1 id="main-header">Marvel API Test</h1>
       <Route exact path="/marvel-display">
         <MarvelDisplay character={character} setComics={setComics}/>
       </Route>

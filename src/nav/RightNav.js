@@ -4,26 +4,28 @@ import '../styles/RightNav.css'
 
 
 
-const RightNav = (props) => {
+const RightNav = () => {
   
   
     return (     
-    <div className="links-container">
-        <Link to="/">
-            <li className="links" onClick={props.handleClick}>
-                Home
-            </li>
-        </Link>
-        <Link to="/marvel-search">
-            <li className="links" onClick={props.handleClick}>
-                Characters
-            </li>
-          </Link>
-          <Link to="/comic-search">
-            <li className="links" onClick={props.handleClick}>
-                Comics
-            </li>
-          </Link>       
+    <div id="rightnav-main">
+        <ul>
+            <Link to="/" className="links" activeClassName="active" iscurrent="true">
+                <li className="rightnav-item">
+                    Home
+                </li>
+            </Link>
+            <Link to="/marvel-search" className="links" activeClassName="active" iscurrent="true">
+                <li className="rightnav-item">
+                    Characters
+                </li>
+            </Link>
+            <Link to="/comic-search" className="links" activeClassName="active" iscurrent="true">
+                <li className="rightnav-item">
+                    Comics
+                </li>
+            </Link>       
+        </ul>
     </div>
     )
 }

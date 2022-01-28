@@ -7,7 +7,7 @@
 
 .input{
     font-family: 'Anime Ace';
-    width: 300px;
+    width: 65vw;
     height: 30px;
     font-size: medium;
 }
@@ -18,4 +18,10 @@
     margin: 10px;
     font-family: 'Anime Ace';
     font-size: medium;
+}
+
+@media(min-width: 767px){
+    .input{
+        width: 250px;
+    }
 }

@@ -50,7 +50,13 @@ const MarvelDisplay = (props) => {
         const newURI = oldURI.split('')
           newURI.splice(4, 0, 's')
         const finalURI = newURI.join('')
-          // console.log('new URI ', finalURI)
+        
+        //Marvel.com outside links
+        const marvelURI = character.urls[0].url
+        const newMarvelURI = marvelURI.split('')
+          newMarvelURI.splice(4, 0, 's')
+        const finalMarvelURI = newMarvelURI.join('')
+          // console.log('new URI ', character.urls[0].url)
 
 
         const imgStr = [`${character?.thumbnail?.path}`,'.', `${character?.thumbnail?.extension}`]
@@ -74,7 +80,7 @@ const MarvelDisplay = (props) => {
                     <h2>Comic Books Available</h2>
                     <p>{character?.comics?.list}</p>
                     <button>Stories: {character?.stories?.collectionURI}</button>
-                    <button ><h4><a target="_blank" rel="noreferrer" href={character.urls[0].url}>More comics on {character.name}</a></h4></button>
+                    <button ><h4><a target="_blank" rel="noreferrer" href={finalMarvelURI}>More comics on {character.name}</a></h4></button>
                     <button ><h4><a target="_blank" rel="noreferrer" href={character.urls[1].url}>More Info about {character.name}</a></h4></button>
                   <Link to="/comics">
                     <button  className="button" onClick={() => props.setComics(finalURI)}>List of comics</button>
